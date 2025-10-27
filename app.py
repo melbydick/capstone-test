@@ -8,9 +8,9 @@ st.title("BUSA 521 — Prototype")
 st.caption("Demo with mock job listings.")
 
 # ---- Simple theme accents (tweak these!) ----
-ACCENT = "#00386C"    #blue
+ACCENT = "#000000"    #blue
 BG_GRAD_A = "#FFC333" #gold
-BG_GRAD_B = "#000000" # slate-800
+BG_GRAD_B = "#00386C" # blue
 
 # ---- CSS: gradient header, pills, cards, buttons ----
 st.markdown(f"""
