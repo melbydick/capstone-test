@@ -10,14 +10,14 @@ st.caption("Demo with fake data.")
 # ---- Simple theme accents (tweak these!) ----
 ACCENT = "#00386C"    #blue
 BG_GRAD_A = "#FFC333" #gold
-BG_GRAD_B = "#FFFFFF" # slate-800
+BG_GRAD_B = "#000000" # slate-800
 
 # ---- CSS: gradient header, pills, cards, buttons ----
 st.markdown(f"""
 <style>
 /* Page background */
 .stApp {{
-  background: linear-gradient(180deg, {BG_GRAD_A} 0%, {BG_GRAD_B} 35%, #0b1220 100%);
+  background: linear-gradient(180deg, {BG_GRAD_A} 0%, {BG_GRAD_B} 10%, #0b1220 100%);
   color: #E6E8EE;
 }}
 </style>
