@@ -5,7 +5,7 @@ from datetime import date
 # ---------- Page setup ----------
 st.set_page_config(page_title="DFW Fortune 500 Data Jobs", layout="wide")
 st.title("BUSA 521 — Prototype")
-st.caption("Demo with fake data.")
+st.caption("Demo with mock job listings.")
 
 # ---- Simple theme accents (tweak these!) ----
 ACCENT = "#00386C"    #blue
@@ -18,7 +18,7 @@ st.markdown(f"""
 /* Page background */
 .stApp {{
   background: linear-gradient(180deg, {BG_GRAD_A} 0%, {BG_GRAD_B} 10%, #0b1220 100%);
-  color: #E6E8EE;
+  color: #FFC333;
 }}
 </style>
 """, unsafe_allow_html=True)
@@ -54,15 +54,6 @@ data = {
 df = pd.DataFrame(data)
 df["posted_date"] = pd.to_datetime(df["posted_date"]).dt.date
 
-# ---------- Sidebar: quick info ----------
-with st.sidebar:
-    st.subheader("About this prototype")
-    st.write(
-        "- Filter by company, location, work type, or keyword\n"
-        "- Click job links to view the original posting\n"
-        "- Replace the fake dataset with database when ready"
-    )
-    st.write("**Today:**", date.today())
 
 # ---------- Filters ----------
 col1, col2, col3, col4 = st.columns([1.2,1.2,1.2,1.6], vertical_alignment="bottom")
