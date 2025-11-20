@@ -39,7 +39,6 @@ section[data-testid="stSidebar"] + div [data-testid="stImage"] img {
     position: absolute;
     top: 10px;
     left: 10px;
-    height: 60px !important;
     z-index: 9999;
 }
 </style>
