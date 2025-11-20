@@ -19,15 +19,19 @@ st.title("DFW Fortune 500 Data Jobs")
 
 st.caption("Demo with mock job listings.")
 
-# ---- CSS: gradient header, pills, cards, buttons ----
 st.markdown(f"""
 <style>
-/* Page background */
-.stApp {
-    background: linear-gradient(180deg, {TAMUC_GOLD} 0px, {TAMUC_BLUE} 120px, #FFFFFF 121px);
-}
+.stApp {{
+  background: linear-gradient(180deg, {TAMUC_GOLD} 0px, {TAMUC_BLUE} 120px, #FFFFFF 121px);
+}}
+
+h1 {{
+  margin-top: 0.2rem !important;
+  margin-bottom: 0.2rem !important;
+}}
 </style>
 """, unsafe_allow_html=True)
+
 
 
 # ---------- Fake dataset (swap this later) ----------
