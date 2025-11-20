@@ -4,6 +4,11 @@ from datetime import date
 
 # ---------- Page setup ----------
 st.set_page_config(page_title="DFW Fortune 500 Data Jobs", layout="wide")
+
+# ---- Colors ----
+TAMUC_BLUE = "#00386C"
+TAMUC_GOLD = "#FFC333"
+
 st.title("BUSA 521 — Prototype")
 st.markdown(
     f"<div style='border-left: 8px solid {TAMUC_GOLD}; padding-left: 10px; font-size: 28px; color:{TAMUC_BLUE}; font-weight:700;'>DFW Fortune 500 Data Jobs</div>",
@@ -11,9 +16,7 @@ st.markdown(
 )
 st.caption("Demo with mock job listings.")
 
-# ---- Colors ----
-TAMUC_BLUE = "#00386C"
-TAMUC_GOLD = "#FFC333"
+
 
 # ---- CSS: gradient header, pills, cards, buttons ----
 st.markdown(f"""
