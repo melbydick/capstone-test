@@ -24,7 +24,7 @@ st.markdown(f"""
 <style>
 /* Page background */
 .stApp {{
-  background: linear-gradient(180deg, {BG_GRAD_A} 0%, {BG_GRAD_B} 20%, #FFFFFF 100%);
+  background: linear-gradient(180deg, {TAMUC_GOLD} 0%, {TAMUC_BLUE} 20%, #FFFFFF 100%);
   color: #FFC333;
 }}
 </style>
