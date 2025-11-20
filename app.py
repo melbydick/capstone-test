@@ -1,17 +1,15 @@
 import streamlit as st
 import pandas as pd
 from datetime import date
-import os
-st.write(os.listdir())
 
-# ---------- Page setup ----------
+#page setup
 st.set_page_config(page_title="BUSA 521 - Capstone", layout="wide")
 
-# ---- Colors ----
+#colors
 TAMUC_BLUE = "#00386C"
 TAMUC_GOLD = "#FFC333"
 
-# ---- CSS for header ----
+#CSS header
 header_css = """
 <style>
 .header-bar {{
@@ -30,22 +28,24 @@ header_css = """
 
 st.markdown(header_css, unsafe_allow_html=True)
 
-#logo positioning
-logo_html = """
+#logo 
+logo = st.image("etamulogo.webp", width=60)
+
+# CSS to move ONLY THIS EXACT image to top-left
+logo_position_css = """
 <style>
-.top-corner-logo {
+/* Target the first stImage on the page */
+section[data-testid="stSidebar"] + div [data-testid="stImage"] img {
     position: absolute;
     top: 10px;
     left: 10px;
-    height: 60px;
+    height: 60px !important;
     z-index: 9999;
 }
 </style>
-
-<img src="etamulogo.webp" class="top-corner-logo">
 """
+st.markdown(logo_position_css, unsafe_allow_html=True)
 
-st.markdown(logo_html, unsafe_allow_html=True)
 
 #header bar across top
 st.markdown(
