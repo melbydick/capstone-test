@@ -122,6 +122,20 @@ st.divider()
 #results
 st.subheader("Job Listings")
 show_cols = ["company_name","job_title","location","work_type","posted_date","job_link"]
+
+#table headers
+table_css = f"""
+<style>
+thead tr th {{
+    background-color: {TAMUC_BLUE} !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 8px !important;
+}}
+</style>
+"""
+st.markdown(table_css, unsafe_allow_html=True)
+
 st.dataframe(filtered[show_cols], use_container_width=True, hide_index=True)
 
 
