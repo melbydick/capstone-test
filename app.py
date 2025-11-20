@@ -28,22 +28,22 @@ header_css = """
 
 st.markdown(header_css, unsafe_allow_html=True)
 
-#logo
-st.image("etamulogo.webp", width=60, output_format="WEBP")
-
 #logo positioning
-
-logo_css = """
+logo_html = """
 <style>
-div[data-testid="stImage"] img {
+.top-corner-logo {
     position: absolute;
     top: 10px;
     left: 10px;
-    height: 60px !important;
+    height: 60px;
+    z-index: 9999;
 }
 </style>
+
+<img src="etamulogo.webp" class="top-corner-logo">
 """
-st.markdown(logo_css, unsafe_allow_html=True)
+
+st.markdown(logo_html, unsafe_allow_html=True)
 
 #header bar across top
 st.markdown(
