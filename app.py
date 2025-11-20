@@ -5,19 +5,22 @@ from datetime import date
 # ---------- Page setup ----------
 st.set_page_config(page_title="DFW Fortune 500 Data Jobs", layout="wide")
 st.title("BUSA 521 — Prototype")
+st.markdown(
+    f"<div style='border-left: 8px solid {TAMUC_GOLD}; padding-left: 10px; font-size: 28px; color:{TAMUC_BLUE}; font-weight:700;'>DFW Fortune 500 Data Jobs</div>",
+    unsafe_allow_html=True
+)
 st.caption("Demo with mock job listings.")
 
-# ---- Simple theme accents (tweak these!) ----
-ACCENT = "#000000"    #blue
-BG_GRAD_A = "#FFC333" #gold
-BG_GRAD_B = "#00386C" # blue
+# ---- Colors ----
+TAMUC_BLUE = "#00386C"
+TAMUC_GOLD = "#FFC333"
 
 # ---- CSS: gradient header, pills, cards, buttons ----
 st.markdown(f"""
 <style>
 /* Page background */
 .stApp {{
-  background: linear-gradient(180deg, {BG_GRAD_A} 0%, {BG_GRAD_B} 10%, #0b1220 100%);
+  background: linear-gradient(180deg, {BG_GRAD_A} 0%, {BG_GRAD_B} 20%, #FFFFFF 100%);
   color: #FFC333;
 }}
 </style>
