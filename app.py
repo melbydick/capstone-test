@@ -5,12 +5,17 @@ from datetime import date
 # ---------- Page setup ----------
 st.set_page_config(page_title="BUSA 521 - Capstone", layout="wide")
 
-st.markdown(f"""
+# ---- Colors ----
+TAMUC_BLUE = "#00386C"
+TAMUC_GOLD = "#FFC333"
+
+# ---- CSS for header ----
+header_css = """
 <style>
 .header-bar {{
-    background-color: {TAMUC_BLUE};
+    background-color: {blue};
     padding: 18px 16px;
-    border-bottom: 4px solid {TAMUC_GOLD};
+    border-bottom: 4px solid {gold};
 }}
 .header-title {{
     color: white;
@@ -19,21 +24,13 @@ st.markdown(f"""
     margin: 0;
 }}
 </style>
-""", unsafe_allow_html=True)
+""".format(blue=TAMUC_BLUE, gold=TAMUC_GOLD)
 
+st.markdown(header_css, unsafe_allow_html=True)
+
+# ---- Header bar HTML ----
 st.markdown(
-    f"<div class='header-bar'><div class='header-title'>DFW Fortune 500 Data Jobs</div></div>",
-    unsafe_allow_html=True
-)
-
-
-# ---- Colors ----
-TAMUC_BLUE = "#00386C"
-TAMUC_GOLD = "#FFC333"
-
-
-st.markdown(
-    f"<div style='border-left: 8px solid {TAMUC_GOLD}; padding-left: 10px; font-size: 28px; color:{TAMUC_BLUE}; font-weight:700;'>DFW Fortune 500 Data Jobs</div>",
+    "<div class='header-bar'><div class='header-title'>DFW Fortune 500 Data Jobs</div></div>",
     unsafe_allow_html=True
 )
 
