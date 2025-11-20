@@ -5,6 +5,28 @@ from datetime import date
 # ---------- Page setup ----------
 st.set_page_config(page_title="BUSA 521 - Capstone", layout="wide")
 
+st.markdown(f"""
+<style>
+.header-bar {{
+    background-color: {TAMUC_BLUE};
+    padding: 18px 16px;
+    border-bottom: 4px solid {TAMUC_GOLD};
+}}
+.header-title {{
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+}}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown(
+    f"<div class='header-bar'><div class='header-title'>DFW Fortune 500 Data Jobs</div></div>",
+    unsafe_allow_html=True
+)
+
+
 # ---- Colors ----
 TAMUC_BLUE = "#00386C"
 TAMUC_GOLD = "#FFC333"
@@ -18,21 +40,6 @@ st.markdown(
 st.title("DFW Fortune 500 Data Jobs")
 
 st.caption("Demo with mock job listings.")
-
-st.markdown(f"""
-<style>
-.stApp {{
-    background: 
-        linear-gradient(0deg, {TAMUC_BLUE} 0%, {TAMUC_BLUE} 100%),
-        linear-gradient(180deg, {TAMUC_GOLD} 0px, {TAMUC_GOLD} 4px);
-}}
-
-h1 {{
-  margin-top: 0.2rem !important;
-  margin-bottom: 0.2rem !important;
-}}
-</style>
-""", unsafe_allow_html=True)
 
 
 # ---------- Fake dataset (swap this later) ----------
