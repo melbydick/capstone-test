@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 from datetime import date
+import os
+st.write(os.listdir())
 
 # ---------- Page setup ----------
 st.set_page_config(page_title="BUSA 521 - Capstone", layout="wide")
