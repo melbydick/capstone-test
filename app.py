@@ -136,7 +136,7 @@ thead tr th {{
 """
 st.markdown(table_css, unsafe_allow_html=True)
 
-st.dataframe(filtered[show_cols], use_container_width=True, hide_index=True)
+st.data_editor(filtered[show_cols], use_container_width=True, hide_index=True, disabled=True)
 
 
 st.divider()
