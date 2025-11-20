@@ -22,7 +22,9 @@ st.caption("Demo with mock job listings.")
 st.markdown(f"""
 <style>
 .stApp {{
-  background: linear-gradient(180deg, {TAMUC_GOLD} 0px, {TAMUC_BLUE} 120px, #FFFFFF 121px);
+    background: 
+        linear-gradient(0deg, {TAMUC_BLUE} 0%, {TAMUC_BLUE} 100%),
+        linear-gradient(180deg, {TAMUC_GOLD} 0px, {TAMUC_GOLD} 4px);
 }}
 
 h1 {{
@@ -31,7 +33,6 @@ h1 {{
 }}
 </style>
 """, unsafe_allow_html=True)
-
 
 
 # ---------- Fake dataset (swap this later) ----------
