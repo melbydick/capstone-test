@@ -4,9 +4,6 @@ from datetime import date
 
 # ---------- Page setup ----------
 st.set_page_config(page_title="DFW Fortune 500 Data Jobs", layout="wide")
-st.title("BUSA 521 — Prototype")
-st.caption("Demo with mock job listings.")
-
 # ---------- Improved TAMUC CSS ----------
 TAMUC_BLUE = "#00386C"
 TAMUC_GOLD = "#FFC333"
