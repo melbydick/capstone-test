@@ -31,15 +31,15 @@ st.markdown(header_css, unsafe_allow_html=True)
 #logo 
 logo = st.image("etamulogo.webp", width=60)
 
-# CSS to move ONLY THIS EXACT image to top-left
+#move logo to top left
 logo_position_css = """
 <style>
-/* Target the first stImage on the page */
+
 section[data-testid="stSidebar"] + div [data-testid="stImage"] img {
     position: absolute;
     top: 10px;
     left: 10px;
-    height: 60px !important;
+    height: 100px !important;
     z-index: 9999;
 }
 </style>
