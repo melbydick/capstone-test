@@ -34,6 +34,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+#logo
+st.image("etamulogo.webp", width=120)
 
 st.title("DFW Fortune 500 Data Jobs")
 
