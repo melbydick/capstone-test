@@ -28,11 +28,12 @@ header_css = """
 
 st.markdown(header_css, unsafe_allow_html=True)
 
-# ---- Header bar HTML ----
+#header bar across top
 st.markdown(
-    "<div class='header-bar'><div class='header-title'>DFW Fortune 500 Data Jobs</div></div>",
+    "<div class='header-bar'><div class='header-title'>BUSA 521 — Capstone</div></div>",
     unsafe_allow_html=True
 )
+
 
 st.title("DFW Fortune 500 Data Jobs")
 
