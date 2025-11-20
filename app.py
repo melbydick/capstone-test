@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import date
 
 # ---------- Page setup ----------
-st.set_page_config(page_title="DFW Fortune 500 Data Jobs", layout="wide")
+st.set_page_config(page_title="BUSA 521 - Capstone", layout="wide")
 
 # ---- Colors ----
 TAMUC_BLUE = "#00386C"
@@ -15,7 +15,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("BUSA 521 — Prototype")
+st.title("DFW Fortune 500 Data Jobs")
 
 st.caption("Demo with mock job listings.")
 
