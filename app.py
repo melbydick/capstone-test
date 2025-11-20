@@ -123,20 +123,24 @@ st.divider()
 st.subheader("Job Listings")
 show_cols = ["company_name","job_title","location","work_type","posted_date","job_link"]
 
-#table headers
-table_css = f"""
-<style>
-thead tr th {{
-    background-color: {TAMUC_BLUE} !important;
-    color: white !important;
-    font-weight: 600 !important;
-    padding: 8px !important;
-}}
-</style>
-"""
-st.markdown(table_css, unsafe_allow_html=True)
+nice_cols = {
+    "company_name": "Company",
+    "job_title": "Job Title",
+    "location": "Location",
+    "work_type": "Work Type",
+    "posted_date": "Posted Date",
+    "job_link": "Job Link"
+}
 
-st.data_editor(filtered[show_cols], use_container_width=True, hide_index=True, disabled=True)
+clean_df = filtered[show_cols].rename(columns=nice_cols)
 
+# 2. Format dates into readable text
+clean_df["Posted Date"] = clean_df["Posted Date"].astype(str)
+
+# 3. Title-case job titles (optional polish)
+clean_df["Job Title"] = clean_df["Job Title"].str.title()
+
+# 4. Show the cleaned table
+st.data_editor(clean_df, use_container_width=True, hide_index=True, disabled=True)
 
 st.divider()
