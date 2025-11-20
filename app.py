@@ -92,6 +92,7 @@ st.divider()
 # ---------- Results table ----------
 st.subheader("Job Listings")
 show_cols = ["company_name","job_title","location","work_type","posted_date","job_link"]
-st.dataframe(filtered[show_cols], use_container_width=True)
+st.dataframe(filtered[show_cols], use_container_width=True, hide_index=True)
+
 
 st.divider()
