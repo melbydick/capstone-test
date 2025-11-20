@@ -57,6 +57,7 @@ data = {
 df = pd.DataFrame(data)
 df["posted_date"] = pd.to_datetime(df["posted_date"]).dt.date
 
+st.markdown(f"<h3 style='color:{TAMUC_BLUE}; margin-bottom:0;'>Filter Jobs</h3>", unsafe_allow_html=True)
 
 # ---------- Filters ----------
 col1, col2, col3, col4 = st.columns([1.2,1.2,1.2,1.6], vertical_alignment="bottom")
