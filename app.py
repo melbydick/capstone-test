@@ -37,10 +37,10 @@ st.markdown(
 
 st.title("DFW Fortune 500 Data Jobs")
 
-st.caption("Demo with mock job listings.")
+st.caption("An interactive dashboard with real job postings.")
 
 
-# ---------- Fake dataset (swap this later) ----------
+#fake data
 data = {
     "company_name": ["PepsiCo","AT&T","American Airlines","ExxonMobil","Texas Instruments",
                      "PepsiCo","AT&T","ExxonMobil","Texas Instruments","American Airlines"],
@@ -72,7 +72,7 @@ df["posted_date"] = pd.to_datetime(df["posted_date"]).dt.date
 
 st.markdown(f"<h3 style='color:{TAMUC_BLUE}; margin-bottom:0; font-weight:700;'>Filter Jobs</h3>", unsafe_allow_html=True)
 
-# ---------- Filters ----------
+#filters
 col1, col2, col3, col4 = st.columns([1.2,1.2,1.2,1.6], vertical_alignment="bottom")
 with col1:
     company = st.selectbox("Company", ["All"] + sorted(df["company_name"].unique()))
@@ -83,7 +83,7 @@ with col3:
 with col4:
     q = st.text_input("Keyword in job title", placeholder="e.g., analyst, engineer, viz")
 
-# ---------- Apply filters ----------
+#filters
 filtered = df.copy()
 if company != "All":
     filtered = filtered[filtered.company_name == company]
@@ -94,7 +94,7 @@ if work != "All":
 if q:
     filtered = filtered[filtered.job_title.str.contains(q, case=False, na=False)]
 
-# ---------- KPIs ----------
+#kpis
 k1, k2, k3 = st.columns(3)
 k1.metric("Total Openings (filtered)", len(filtered))
 k2.metric("Companies (filtered)", filtered["company_name"].nunique())
@@ -102,7 +102,7 @@ k3.metric("Newest Posting", str(filtered["posted_date"].max()) if not filtered.e
 
 st.divider()
 
-# ---------- Results table ----------
+#results
 st.subheader("Job Listings")
 show_cols = ["company_name","job_title","location","work_type","posted_date","job_link"]
 st.dataframe(filtered[show_cols], use_container_width=True, hide_index=True)
