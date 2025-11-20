@@ -91,6 +91,3 @@ show_cols = ["company_name","job_title","location","work_type","posted_date","jo
 st.dataframe(filtered[show_cols], use_container_width=True)
 
 st.divider()
-
-</style>
-""", unsafe_allow_html=True)
