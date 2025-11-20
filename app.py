@@ -29,7 +29,7 @@ header_css = """
 st.markdown(header_css, unsafe_allow_html=True)
 
 #logo 
-logo = st.image("etamulogo.webp", width=60)
+logo = st.image("etamulogo.webp", width=120)
 
 #move logo to top left
 logo_position_css = """
@@ -39,7 +39,7 @@ section[data-testid="stSidebar"] + div [data-testid="stImage"] img {
     position: absolute;
     top: 10px;
     left: 10px;
-    height: 100px !important;
+    height: 60px !important;
     z-index: 9999;
 }
 </style>
