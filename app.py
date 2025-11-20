@@ -29,7 +29,7 @@ header_css = """
 st.markdown(header_css, unsafe_allow_html=True)
 
 #logo 
-logo = st.image("etamulogo.webp", width=120)
+logo = st.image("etamulogo.webp", width=150)
 
 #move logo to top left
 logo_position_css = """
