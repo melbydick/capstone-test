@@ -28,14 +28,30 @@ header_css = """
 
 st.markdown(header_css, unsafe_allow_html=True)
 
+logo_css = """
+<style>
+.top-logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 60px;
+    z-index: 9999;
+}
+</style>
+"""
+st.markdown(logo_css, unsafe_allow_html=True)
+
+st.markdown(
+    "<img src='etamulogo.webp' class='top-logo'>",
+    unsafe_allow_html=True
+)
+
+
 #header bar across top
 st.markdown(
     "<div class='header-bar'><div class='header-title'>BUSA 521 — Capstone</div></div>",
     unsafe_allow_html=True
 )
-
-#logo
-st.image("etamulogo.webp", width=120)
 
 st.title("DFW Fortune 500 Data Jobs")
 
