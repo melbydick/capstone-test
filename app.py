@@ -23,10 +23,9 @@ st.caption("Demo with mock job listings.")
 st.markdown(f"""
 <style>
 /* Page background */
-.stApp {{
-  background: linear-gradient(180deg, {TAMUC_GOLD} 0%, {TAMUC_BLUE} 8%, #ffffff 40%);
-  color: #000000;
-}}
+.stApp {
+    background: linear-gradient(180deg, {TAMUC_GOLD} 0px, {TAMUC_BLUE} 120px, #FFFFFF 121px);
+}
 </style>
 """, unsafe_allow_html=True)
 
