@@ -123,6 +123,7 @@ st.divider()
 st.subheader("Job Listings")
 show_cols = ["company_name","job_title","location","work_type","posted_date","job_link"]
 
+#rename columns
 nice_cols = {
     "company_name": "Company",
     "job_title": "Job Title",
@@ -134,13 +135,10 @@ nice_cols = {
 
 clean_df = filtered[show_cols].rename(columns=nice_cols)
 
-# 2. Format dates into readable text
+#format dates
 clean_df["Posted Date"] = clean_df["Posted Date"].astype(str)
 
-# 3. Title-case job titles (optional polish)
-clean_df["Job Title"] = clean_df["Job Title"].str.title()
-
-# 4. Show the cleaned table
+#show cleaned table
 st.data_editor(clean_df, use_container_width=True, hide_index=True, disabled=True)
 
 st.divider()
