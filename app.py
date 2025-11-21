@@ -133,6 +133,10 @@ nice_cols = {
     "job_link": "Job Link"
 }
 
+#format dates
+clean_df["Posted Date"] = clean_df["Posted Date"].astype(str)
+
+
 clean_df = filtered[show_cols].rename(columns=nice_cols)
 
 
