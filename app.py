@@ -135,8 +135,6 @@ nice_cols = {
 
 clean_df = filtered[show_cols].rename(columns=nice_cols)
 
-#format dates
-clean_df["Posted Date"] = clean_df["Posted Date"].astype(str)
 
 #show cleaned table
 st.data_editor(clean_df, use_container_width=True, hide_index=True, disabled=True)
