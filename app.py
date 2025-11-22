@@ -60,9 +60,6 @@ st.caption("An interactive dashboard with real job postings.")
 #load data
 df = pd.read_csv("all_jobs.csv")
 
-#conver posted date
-df["Posted On"] = pd.to_datetime(df["Posted On"], errors="coerce").dt.date
-
 #filters
 st.markdown(f"<h3 style='color:{TAMUC_BLUE}; margin-bottom:0; font-weight:700;'>Filter Jobs</h3>", unsafe_allow_html=True)
 
@@ -100,7 +97,7 @@ nice_cols = {
     "Company": "Company",
     "Title": "Job Title",
     "Location": "Location",
-    "Posted On": "Posted Date",
+    "Posted On": "Posted On",
     "Job URL": "Job Link"
 }
 
