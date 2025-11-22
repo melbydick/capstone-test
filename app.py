@@ -84,7 +84,7 @@ if q:
 k1, k2, k3 = st.columns(3)
 k1.metric("Total Openings", len(filtered))
 k2.metric("Companies", filtered["Company"].nunique())
-k3.metric("Newest Posting", str(filtered["Posted On"].max()) if not filtered.empty else "—")
+k3.metric("Newest Posting", filtered["Posted On"].iloc[0] if not filtered.empty else "—")
 
 st.divider()
 
