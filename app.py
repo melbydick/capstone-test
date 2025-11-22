@@ -103,9 +103,6 @@ nice_cols = {
 
 clean_df = filtered[show_cols].rename(columns=nice_cols)
 
-# format dates
-clean_df["Posted Date"] = clean_df["Posted Date"].astype(str)
-
 # Title case job titles
 clean_df["Job Title"] = clean_df["Job Title"].str.title()
 
