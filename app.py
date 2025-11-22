@@ -60,44 +60,68 @@ st.caption("An interactive dashboard with real job postings.")
 #load data
 df = pd.read_csv("all_jobs.csv")
 
-#filters
-st.markdown(f"<h3 style='color:{TAMUC_BLUE}; margin-bottom:0; font-weight:700;'>Filter Jobs</h3>", unsafe_allow_html=True)
+#filter header
+st.markdown(
+    f"<h3 style='color:{TAMUC_BLUE}; margin-bottom:0; font-weight:700;'>Filter Jobs</h3>",
+    unsafe_allow_html=True
+)
 
-col1, col2, col3 = st.columns([1.2,1.2,1.6], vertical_alignment="bottom")
+col1, col2, col3 = st.columns([1.2, 1.2, 1.6], vertical_alignment="bottom")
+
 with col1:
     company = st.selectbox("Company", ["All"] + sorted(df["Company"].dropna().unique()))
+
 with col2:
     location = st.selectbox("Location", ["All"] + sorted(df["Location"].dropna().unique()))
+
 with col3:
     q = st.text_input("Keyword in job title", placeholder="e.g., analyst, engineer, data")
 
+
 #filters
 filtered = df.copy()
+
 if company != "All":
     filtered = filtered[filtered["Company"] == company]
+
 if location != "All":
     filtered = filtered[filtered["Location"] == location]
+
 if q:
     filtered = filtered[filtered["Title"].str.contains(q, case=False, na=False)]
 
-# Extract days as a number so we can sort by freshness
-filtered["DaysAgo"] = (
-    filtered["Posted On"]
-    .str.extract(r'(\d+)')  # get the numeric part
-    .astype(int)            # convert to number
-)
+#parse date days ago for KPI
+def extract_days_ago(text):
+    if not isinstance(text, str):
+        return 9999
 
+    t = text.lower().strip()
 
-#kpis
+    if "today" in t:
+        return 0
+    if "yesterday" in t:
+        return 1
+
+    import re
+    match = re.search(r'(\d+)', t)
+    if match:
+        return int(match.group(1))
+
+    return 9999
+
+filtered["DaysAgo"] = filtered["Posted On"].apply(extract_days_ago)
+
+#KPIs
 k1, k2, k3 = st.columns(3)
 k1.metric("Total Openings", len(filtered))
 k2.metric("Companies", filtered["Company"].nunique())
-if not filtered.empty:
-    newest = filtered.sort_values("DaysAgo").iloc[0]["Posted On"]
-else:
-    newest = "—"
 
-k3.metric("Newest Posting", newest)
+if not filtered.empty:
+    newest_post = filtered.sort_values("DaysAgo").iloc[0]["Posted On"]
+else:
+    newest_post = "—"
+
+k3.metric("Newest Posting", newest_post)
 
 st.divider()
 
