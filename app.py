@@ -57,86 +57,60 @@ st.title("DFW Fortune 500 Data Jobs")
 st.caption("An interactive dashboard with real job postings.")
 
 
-#fake data
-data = {
-    "company_name": ["PepsiCo","AT&T","American Airlines","ExxonMobil","Texas Instruments",
-                     "PepsiCo","AT&T","ExxonMobil","Texas Instruments","American Airlines"],
-    "job_title": ["Data Analyst","BI Engineer","Data Scientist","Analytics Manager","BI Developer",
-                  "Senior Data Analyst","Report Analyst","Data Engineer","Analytics Lead","Data Visualization Analyst"],
-    "location": ["Plano, TX","Dallas, TX","Fort Worth, TX","Irving, TX","Dallas, TX",
-                 "Plano, TX","Dallas, TX","Houston, TX","Dallas, TX","Fort Worth, TX"],
-    "work_type": ["Hybrid","On-site","Remote","Hybrid","Remote",
-                  "Hybrid","On-site","Hybrid","Remote","Hybrid"],
-    "posted_date": [
-        "2025-10-10","2025-10-09","2025-10-08","2025-10-08","2025-10-07",
-        "2025-10-06","2025-10-06","2025-10-05","2025-10-05","2025-10-04"
-    ],
-    "job_link": [
-        "https://careers.pepsico.com",
-        "https://att.jobs",
-        "https://jobs.aa.com",
-        "https://jobs.exxonmobil.com",
-        "https://careers.ti.com",
-        "https://careers.pepsico.com",
-        "https://att.jobs",
-        "https://jobs.exxonmobil.com",
-        "https://careers.ti.com",
-        "https://jobs.aa.com"
-    ]
-}
-df = pd.DataFrame(data)
-df["posted_date"] = pd.to_datetime(df["posted_date"]).dt.date
+#load data
+df = pd.read_csv("all_jobs.csv")
 
-st.markdown(f"<h3 style='color:{TAMUC_BLUE}; margin-bottom:0; font-weight:700;'>Filter Jobs</h3>", unsafe_allow_html=True)
+#conver posted date
+df["Posted On"] = pd.to_datetime(df["Posted On"], errors="coerce").dt.date
 
 #filters
-col1, col2, col3, col4 = st.columns([1.2,1.2,1.2,1.6], vertical_alignment="bottom")
+st.markdown(f"<h3 style='color:{TAMUC_BLUE}; margin-bottom:0; font-weight:700;'>Filter Jobs</h3>", unsafe_allow_html=True)
+
+col1, col2, col3 = st.columns([1.2,1.2,1.6], vertical_alignment="bottom")
 with col1:
-    company = st.selectbox("Company", ["All"] + sorted(df["company_name"].unique()))
+    company = st.selectbox("Company", ["All"] + sorted(df["Company"].dropna().unique()))
 with col2:
-    location = st.selectbox("Location", ["All"] + sorted(df["location"].unique()))
+    location = st.selectbox("Location", ["All"] + sorted(df["Location"].dropna().unique()))
 with col3:
-    work = st.selectbox("Work Type", ["All"] + sorted(df["work_type"].unique()))
-with col4:
-    q = st.text_input("Keyword in job title", placeholder="e.g., analyst, engineer, viz")
+    q = st.text_input("Keyword in job title", placeholder="e.g., analyst, engineer, data")
 
 #filters
 filtered = df.copy()
 if company != "All":
-    filtered = filtered[filtered.company_name == company]
+    filtered = filtered[filtered["Company"] == company]
 if location != "All":
-    filtered = filtered[filtered.location == location]
-if work != "All":
-    filtered = filtered[filtered.work_type == work]
+    filtered = filtered[filtered["Location"] == location]
 if q:
-    filtered = filtered[filtered.job_title.str.contains(q, case=False, na=False)]
+    filtered = filtered[filtered["Title"].str.contains(q, case=False, na=False)]
 
 #kpis
 k1, k2, k3 = st.columns(3)
-k1.metric("Total Openings (filtered)", len(filtered))
-k2.metric("Companies (filtered)", filtered["company_name"].nunique())
-k3.metric("Newest Posting", str(filtered["posted_date"].max()) if not filtered.empty else "—")
+k1.metric("Total Openings", len(filtered))
+k2.metric("Companies", filtered["Company"].nunique())
+k3.metric("Newest Posting", str(filtered["Posted On"].max()) if not filtered.empty else "—")
 
 st.divider()
 
 #results
 st.subheader("Job Listings")
-show_cols = ["company_name","job_title","location","work_type","posted_date","job_link"]
+show_cols = ["Company", "Title", "Location", "Posted On", "Job URL"]
 
 #rename columns
 nice_cols = {
-    "company_name": "Company",
-    "job_title": "Job Title",
-    "location": "Location",
-    "work_type": "Work Type",
-    "posted_date": "Posted Date",
-    "job_link": "Job Link"
+    "Company": "Company",
+    "Title": "Job Title",
+    "Location": "Location",
+    "Posted On": "Posted Date",
+    "Job URL": "Job Link"
 }
 
 clean_df = filtered[show_cols].rename(columns=nice_cols)
 
-#format dates
+# format dates
 clean_df["Posted Date"] = clean_df["Posted Date"].astype(str)
+
+# Title case job titles
+clean_df["Job Title"] = clean_df["Job Title"].str.title()
 
 #show cleaned table
 st.data_editor(clean_df, use_container_width=True, hide_index=True, disabled=True)
