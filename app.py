@@ -80,11 +80,24 @@ if location != "All":
 if q:
     filtered = filtered[filtered["Title"].str.contains(q, case=False, na=False)]
 
+# Extract days as a number so we can sort by freshness
+filtered["DaysAgo"] = (
+    filtered["Posted On"]
+    .str.extract(r'(\d+)')  # get the numeric part
+    .astype(int)            # convert to number
+)
+
+
 #kpis
 k1, k2, k3 = st.columns(3)
 k1.metric("Total Openings", len(filtered))
 k2.metric("Companies", filtered["Company"].nunique())
-k3.metric("Newest Posting", filtered["Posted On"].iloc[0] if not filtered.empty else "—")
+if not filtered.empty:
+    newest = filtered.sort_values("DaysAgo").iloc[0]["Posted On"]
+else:
+    newest = "—"
+
+k3.metric("Newest Posting", newest)
 
 st.divider()
 
