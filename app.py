@@ -111,6 +111,10 @@ def extract_days_ago(text):
 
 filtered["DaysAgo"] = filtered["Posted On"].apply(extract_days_ago)
 
+#sort table by newest job posting
+filtered = filtered.sort_values("DaysAgo")
+
+
 #KPIs
 k1, k2, k3 = st.columns(3)
 k1.metric("Total Openings", len(filtered))
