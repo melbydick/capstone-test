@@ -141,5 +141,5 @@ print(f"Total Jobs Collected: {len(df)}")
 
 #PREVENT EMPTY CSV FILE
 if len(final_results) == 0:
-    print("No jobs scraped — CSV will not be updated.")
+    print("No jobs scraped, CSV not updated.")
     exit(1)
