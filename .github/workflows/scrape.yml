@@ -26,6 +26,13 @@ jobs:
     - name: Run scraper
       run: python scraper.py
 
+    - name: Prevent committing empty CSV
+      run: |
+        if [ ! -s all_jobs.csv ]; then
+          echo "CSV is empty — aborting commit."
+          exit 1
+        fi
+
     - name: Commit updated CSV
       run: |
         git config --local user.email "action@github.com"
