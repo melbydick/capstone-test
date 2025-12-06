@@ -133,3 +133,7 @@ df.to_csv("all_jobs.csv", index=False)
 print("\n Completed! Saved jobs → all_jobs.csv")
 print(f"Total Jobs Collected: {len(df)}")
 
+#PREVENT EMPTY CSV FILE
+if len(final_results) == 0:
+    print("No jobs scraped — CSV will not be updated.")
+    exit(1)
