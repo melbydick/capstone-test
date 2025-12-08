@@ -10,19 +10,17 @@ COMPANIES = {
     "Walmart": {
         "URL": "https://walmart.wd5.myworkdayjobs.com/wday/cxs/walmart/WalmartExternal/jobs",
         "PRE_URL": "https://walmart.wd5.myworkdayjobs.com/en-US/WalmartExternal",
-        "payloadFilters": {}
+        "payloadFilters" : { "locationRegionStateProvince" : ["fc77e3a1ab36487f9646d14f7242dd77"] }
     },
-
     "Target": {
         "URL": "https://target.wd5.myworkdayjobs.com/wday/cxs/target/targetcareers/jobs",
         "PRE_URL": "https://target.wd5.myworkdayjobs.com/en-US/targetcareers",
-        "payloadFilters": {}
+        "payloadFilters" : {"Location_Region_State_Province": [ "fc77e3a1ab36487f9646d14f7242dd77"] }
     },
-
     "Adobe": {
         "URL": "https://adobe.wd5.myworkdayjobs.com/wday/cxs/adobe/external_experienced/jobs",
         "PRE_URL": "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced",
-        "payloadFilters": {}
+        "payloadFilters" : {"locations": [ "3ba4ecdf4893100bc84c991cf5176d0b"] }
     }
 }
 
@@ -57,7 +55,7 @@ def fetch_jobs_for_company(company, config, search_text):
     offset = 0
     limit = 20   # Workday Limit (cannot be  > 20)
     total = 0  
-    
+
     while True:
         payload = {
             "appliedFacets": config.get("payloadFilters", {}),
@@ -74,7 +72,7 @@ def fetch_jobs_for_company(company, config, search_text):
             if offset == 0:
                 total = data.get("total", 0)
                 print("Total Jobs Found : ",total)
-            
+
             if not jobs:
                 break  # no more pages
 
@@ -98,17 +96,17 @@ def fetch_jobs_for_company(company, config, search_text):
                     "Job URL": full_url
                 })
 
-            
-            
+
+
             # Stop if we already fetched all available jobs
             offset += limit
 
             current = total if offset >= total else offset
             print("Fetched : ", current , " OF " , total)
-            
+
             if offset >= total:
                 break
-                
+
             time.sleep(0.5)  # avoid blocking
 
         except Exception as e:
@@ -143,5 +141,6 @@ print(f"Total Jobs Collected: {len(df)}")
 
 #PREVENT EMPTY CSV FILE
 if len(final_results) == 0:
+    print("No jobs scraped — CSV will not be updated.")
     print("No jobs scraped, CSV not updated.")
     exit(1)
