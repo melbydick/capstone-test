@@ -10,18 +10,18 @@ COMPANIES = {
     "Walmart": {
         "URL": "https://walmart.wd5.myworkdayjobs.com/wday/cxs/walmart/WalmartExternal/jobs",
         "PRE_URL": "https://walmart.wd5.myworkdayjobs.com/en-US/WalmartExternal",
-        "payloadFilters" : { "locationRegionStateProvince" : ["fc77e3a1ab36487f9646d14f7242dd77"] }
-    },
+        "payloadFilters": {}
+
     "Target": {
         "URL": "https://target.wd5.myworkdayjobs.com/wday/cxs/target/targetcareers/jobs",
         "PRE_URL": "https://target.wd5.myworkdayjobs.com/en-US/targetcareers",
-        "payloadFilters" : {"Location_Region_State_Province": [ "fc77e3a1ab36487f9646d14f7242dd77"] }
-    },
+        "payloadFilters": {}
+
     "Adobe": {
         "URL": "https://adobe.wd5.myworkdayjobs.com/wday/cxs/adobe/external_experienced/jobs",
         "PRE_URL": "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced",
-        "payloadFilters" : {"locations": [ "3ba4ecdf4893100bc84c991cf5176d0b"] }
-    }
+        "payloadFilters": {}
+
 }
 
 # Search keywords
